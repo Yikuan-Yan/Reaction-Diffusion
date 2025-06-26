@@ -30,6 +30,7 @@ steps_per_frame = 50    # How many iterations per animation frame
 # ----------------------------------------------------------------------------
 gamma_dot = 2        # Shear rate (velocity gradient)
 dt_step = 0.02         # Physical time per frame for the shear displacement
+startflow = 0     # Time to start the flow
 
 # ----------------------------------------------------------------------------
 # Laplacian operator with periodic boundary conditions
@@ -147,7 +148,7 @@ def update(frame):
         np.clip(V, 0, 1, out=V)
 
     # 2) Apply shear flow (advection)
-    if frame*steps_per_frame>5000:
+    if frame*steps_per_frame>startflow:
         U = flow(U, frame)
         V = flow(V, frame)
 
