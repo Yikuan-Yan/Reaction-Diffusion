@@ -28,7 +28,7 @@ steps_per_frame = 50    # How many iterations per animation frame
 # ----------------------------------------------------------------------------
 # Shear flow (advection) parameters
 # ----------------------------------------------------------------------------
-gamma_dot = 0.5        # Shear rate (velocity gradient)
+gamma_dot = 2        # Shear rate (velocity gradient)
 dt_step = 0.02         # Physical time per frame for the shear displacement
 
 # ----------------------------------------------------------------------------
@@ -147,8 +147,9 @@ def update(frame):
         np.clip(V, 0, 1, out=V)
 
     # 2) Apply shear flow (advection)
-    U = flow(U, frame)
-    V = flow(V, frame)
+    if frame*steps_per_frame>5000:
+        U = flow(U, frame)
+        V = flow(V, frame)
 
     # 3) Update the images in the plot
     caxU.set_data(U)
