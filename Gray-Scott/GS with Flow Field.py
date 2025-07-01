@@ -5,10 +5,10 @@ from matplotlib.animation import FuncAnimation
 # ----------------------------------------------------------------------------
 # Parameters for the Gray–Scott reaction–diffusion system
 # ----------------------------------------------------------------------------
-Du = 0.16            # Diffusion rate of chemical U
-Dv = 0.08            # Diffusion rate of chemical V
-F  = 0.060           # Feed rate of U
-k  = 0.062           # Kill rate (removal) of V
+Du = 0.16           # Diffusion rate of chemical U #0.16
+Dv = 0.08            # Diffusion rate of chemical V #0.08
+F  = 0.06           # Feed rate of U                    # 0.060
+k  = 0.062           # Kill rate (removal) of V          # 0.062
 
 # ----------------------------------------------------------------------------
 # Grid and spatial setup
