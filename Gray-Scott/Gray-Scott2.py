@@ -8,7 +8,10 @@ F = 0.060
 k = 0.062
 
 grid_size = 200
-dt = 1.0
+Fineness = 0.5
+CFL_coeff = 0.64
+dx = 4*Du / CFL_coeff * Fineness
+dt = 4*Du / CFL_coeff * Fineness**2
 total_steps = 20000
 steps_per_frame = 50
 
@@ -19,7 +22,7 @@ def laplacian(Z):
     i_down = (i + 1) % grid_size
     j_left = (j - 1) % grid_size
     j_right = (j + 1) % grid_size
-    return Z[i_up][:, j] + Z[i_down][:, j] + Z[i][:, j_left] + Z[i][:, j_right] - 4 * Z
+    return (Z[i_up][:, j] + Z[i_down][:, j] + Z[i][:, j_left] + Z[i][:, j_right] - 4 * Z)/(dx*dx)
 
 def init_conditions(size, stripe_freq=6, noise_amp=0.02):
     U = np.ones((size, size))
